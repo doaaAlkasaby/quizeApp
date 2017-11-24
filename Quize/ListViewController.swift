@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ListViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
+class ListViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource{
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UICollectionView!
     var Products = [Product]()
     var SavedProducts = [ProductTable]()
     var localOrRemote : String?
@@ -34,12 +34,11 @@ class ListViewController: UIViewController , UITableViewDataSource, UITableViewD
         dismiss(animated: false, completion: nil)
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    private func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if localOrRemote == "local" {
             return SavedProducts.count
             
@@ -48,8 +47,8 @@ class ListViewController: UIViewController , UITableViewDataSource, UITableViewD
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = tableView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as! ListViewCell
         
         if localOrRemote == "local" {
             cell.nameTV.text! = SavedProducts[indexPath.row].productName!
@@ -58,36 +57,36 @@ class ListViewController: UIViewController , UITableViewDataSource, UITableViewD
             cell.customerPhoneTV.text! = SavedProducts[indexPath.row].customerPhone!
             let imageLink = SavedProducts[indexPath.row].picture!
             cell.setItemImage(imgUrl: imageLink)
+            //set item rate value as its cell numer as a temporary value
+            cell.setItemRating(rateValue: indexPath.row + 1)
         }else {
-        cell.nameTV.text! = Products[indexPath.row].ProductName!
-        cell.priceTV.text! = Products[indexPath.row].Price!
-        cell.customerNameTV.text! = Products[indexPath.row].Customer_name!
-        cell.customerPhoneTV.text! = Products[indexPath.row].Customer_Phone!
-        let imageLink = Products[indexPath.row].picture!
-        cell.setItemImage(imgUrl: imageLink)
+            cell.nameTV.text! = Products[indexPath.row].ProductName!
+            cell.priceTV.text! = Products[indexPath.row].Price!
+            cell.customerNameTV.text! = Products[indexPath.row].Customer_name!
+            cell.customerPhoneTV.text! = Products[indexPath.row].Customer_Phone!
+            let imageLink = Products[indexPath.row].picture!
+            cell.setItemImage(imgUrl: imageLink)
+            //set item rate value as its cell numer as a temporary value
+            cell.setItemRating(rateValue: indexPath.row + 1)
         }
+        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         if localOrRemote == "local" {
-        performSegue(withIdentifier: "list_map_segue", sender: SavedProducts[indexPath.row])
-         }else{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if localOrRemote == "local" {
+            performSegue(withIdentifier: "list_map_segue", sender: SavedProducts[indexPath.row])
+        }else{
             performSegue(withIdentifier: "list_map_segue", sender: Products[indexPath.row])
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dist = segue.destination as? LocationViewController {
+        if let dist = segue.destination as? MapDirectionViewController {
             print("step1")
             let lat = Double((sender as! Product).Lat!)
-            dist.lat = lat
             let long = Double((sender as! Product).Lan!)
-            dist.long = long
+            dist.setDestinationDim(lat: lat!, long: long!)
         }
     }
 }

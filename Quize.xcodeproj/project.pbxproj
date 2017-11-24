@@ -9,12 +9,9 @@
 /* Begin PBXBuildFile section */
 		4C04D1741FB7031D0028EA55 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C04D1731FB7031D0028EA55 /* CollectionViewController.swift */; };
 		4C04D1761FB703300028EA55 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C04D1751FB703300028EA55 /* ListViewController.swift */; };
-		4C04D1781FB703440028EA55 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C04D1771FB703440028EA55 /* MapViewController.swift */; };
 		4C04D17A1FB706170028EA55 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C04D1791FB706170028EA55 /* ListViewCell.swift */; };
 		4C04D17E1FB706D60028EA55 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C04D17D1FB706D60028EA55 /* CollectionViewCell.swift */; };
 		4C04D1801FB709050028EA55 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C04D17F1FB709050028EA55 /* Product.swift */; };
-		4C04D1821FB77E620028EA55 /* MapViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C04D1811FB77E620028EA55 /* MapViewController2.swift */; };
-		4C0F88001FB8AAD10086FA68 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F87FF1FB8AAD10086FA68 /* LocationViewController.swift */; };
 		4C3353FB1FB8367E0017D8C7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3353FA1FB8367E0017D8C7 /* Reachability.swift */; };
 		4C4F9B031FB68F22008557AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F9B021FB68F22008557AE /* AppDelegate.swift */; };
 		4C4F9B051FB68F22008557AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F9B041FB68F22008557AE /* LoginViewController.swift */; };
@@ -24,17 +21,17 @@
 		4C4F9B101FB68F23008557AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4F9B0E1FB68F23008557AE /* LaunchScreen.storyboard */; };
 		4C4F9B191FB6B22D008557AE /* grid_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4F9B171FB6B209008557AE /* grid_icon.png */; };
 		4C4F9B1A1FB6B231008557AE /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4F9B181FB6B209008557AE /* menu_icon.png */; };
+		4C9942E11FC5EE6500A8E381 /* MapDirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9942E01FC5EE6500A8E381 /* MapDirectionViewController.swift */; };
+		6CAC3536F14B2517370857E8 /* Pods_Quize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16EC13B4C2306D8C52A667B /* Pods_Quize.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4633CF4A45FFE72B8B0905AD /* Pods-Quize.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quize.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quize/Pods-Quize.debug.xcconfig"; sourceTree = "<group>"; };
 		4C04D1731FB7031D0028EA55 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		4C04D1751FB703300028EA55 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		4C04D1771FB703440028EA55 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4C04D1791FB706170028EA55 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		4C04D17D1FB706D60028EA55 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		4C04D17F1FB709050028EA55 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		4C04D1811FB77E620028EA55 /* MapViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController2.swift; sourceTree = "<group>"; };
-		4C0F87FF1FB8AAD10086FA68 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		4C3353FA1FB8367E0017D8C7 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		4C4F9AFF1FB68F22008557AE /* Quize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C4F9B021FB68F22008557AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +43,10 @@
 		4C4F9B111FB68F23008557AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4F9B171FB6B209008557AE /* grid_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid_icon.png; sourceTree = "<group>"; };
 		4C4F9B181FB6B209008557AE /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
+		4C9942E01FC5EE6500A8E381 /* MapDirectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDirectionViewController.swift; sourceTree = "<group>"; };
+		4C9942E21FC5F3D400A8E381 /* Google Direction-07674dbf8433.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Google Direction-07674dbf8433.json"; sourceTree = "<group>"; };
+		A16EC13B4C2306D8C52A667B /* Pods_Quize.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quize.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D129E8FF948BAFDF734A74AE /* Pods-Quize.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quize.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quize/Pods-Quize.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,17 +54,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CAC3536F14B2517370857E8 /* Pods_Quize.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		338ED0297577739F9FE64CE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A16EC13B4C2306D8C52A667B /* Pods_Quize.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4C4F9AF61FB68F22008557AE = {
 			isa = PBXGroup;
 			children = (
 				4C4F9B011FB68F22008557AE /* Quize */,
 				4C4F9B001FB68F22008557AE /* Products */,
+				518C3535D4517853D20C9504 /* Pods */,
+				338ED0297577739F9FE64CE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +92,7 @@
 			children = (
 				4C3353FA1FB8367E0017D8C7 /* Reachability.swift */,
 				4C4F9B021FB68F22008557AE /* AppDelegate.swift */,
+				4C9942E21FC5F3D400A8E381 /* Google Direction-07674dbf8433.json */,
 				4C4F9B061FB68F23008557AE /* Main.storyboard */,
 				4C4F9B0C1FB68F23008557AE /* Assets.xcassets */,
 				4C4F9B171FB6B209008557AE /* grid_icon.png */,
@@ -92,12 +105,19 @@
 				4C04D17D1FB706D60028EA55 /* CollectionViewCell.swift */,
 				4C04D1751FB703300028EA55 /* ListViewController.swift */,
 				4C04D1791FB706170028EA55 /* ListViewCell.swift */,
-				4C04D1771FB703440028EA55 /* MapViewController.swift */,
+				4C9942E01FC5EE6500A8E381 /* MapDirectionViewController.swift */,
 				4C04D17F1FB709050028EA55 /* Product.swift */,
-				4C04D1811FB77E620028EA55 /* MapViewController2.swift */,
-				4C0F87FF1FB8AAD10086FA68 /* LocationViewController.swift */,
 			);
 			path = Quize;
+			sourceTree = "<group>";
+		};
+		518C3535D4517853D20C9504 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4633CF4A45FFE72B8B0905AD /* Pods-Quize.debug.xcconfig */,
+				D129E8FF948BAFDF734A74AE /* Pods-Quize.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,9 +127,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C4F9B141FB68F23008557AE /* Build configuration list for PBXNativeTarget "Quize" */;
 			buildPhases = (
+				A8ACEDB08AB165EC0A714076 /* [CP] Check Pods Manifest.lock */,
 				4C4F9AFB1FB68F22008557AE /* Sources */,
 				4C4F9AFC1FB68F22008557AE /* Frameworks */,
 				4C4F9AFD1FB68F22008557AE /* Resources */,
+				0F6E338BFC32D3CF71065D70 /* [CP] Embed Pods Frameworks */,
+				0F3DC5382A7C62ECEB07223C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,17 +192,81 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F3DC5382A7C62ECEB07223C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Quize/Pods-Quize-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Quize/Pods-Quize-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0F6E338BFC32D3CF71065D70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Quize/Pods-Quize-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/GooglePlacesAPI/GooglePlacesAPI.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesAPI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Quize/Pods-Quize-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8ACEDB08AB165EC0A714076 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Quize-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4C4F9AFB1FB68F22008557AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4C04D1741FB7031D0028EA55 /* CollectionViewController.swift in Sources */,
-				4C04D1781FB703440028EA55 /* MapViewController.swift in Sources */,
 				4C04D17E1FB706D60028EA55 /* CollectionViewCell.swift in Sources */,
-				4C0F88001FB8AAD10086FA68 /* LocationViewController.swift in Sources */,
+				4C9942E11FC5EE6500A8E381 /* MapDirectionViewController.swift in Sources */,
 				4C04D1801FB709050028EA55 /* Product.swift in Sources */,
-				4C04D1821FB77E620028EA55 /* MapViewController2.swift in Sources */,
 				4C4F9B051FB68F22008557AE /* LoginViewController.swift in Sources */,
 				4C4F9B0B1FB68F23008557AE /* Quize.xcdatamodeld in Sources */,
 				4C3353FB1FB8367E0017D8C7 /* Reachability.swift in Sources */,
@@ -320,6 +407,7 @@
 		};
 		4C4F9B151FB68F23008557AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4633CF4A45FFE72B8B0905AD /* Pods-Quize.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -334,6 +422,7 @@
 		};
 		4C4F9B161FB68F23008557AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D129E8FF948BAFDF734A74AE /* Pods-Quize.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

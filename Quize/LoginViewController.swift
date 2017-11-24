@@ -8,6 +8,8 @@
 
 import UIKit
 import SystemConfiguration
+import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
 
@@ -22,19 +24,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
     
-
-    override func viewDidAppear(_ animated: Bool) {
-        let loginBefore = UserDefaults.standard.object(forKey: "login") as? Bool
-                //print("login before", loginBefore!)
-        
-        if(loginBefore != nil){
-                if(loginBefore!){
-                    //open next page
-                    print("logged")
-                    self.performSegue(withIdentifier: "OrdersSegue", sender: self)
-                }
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,14 +31,14 @@ class LoginViewController: UIViewController {
         usernameTF.addTarget(self, action:#selector(usernameChanged), for: UIControlEvents.editingChanged)
         passwordTF.addTarget(self, action:#selector(passwordChanged), for: UIControlEvents.editingChanged)
 
-        //
-        // Solid color
-        let borderColor = UIColor.green
+    
+        // border color
+        let borderColor = UIColor(red: 0, green: 255, blue: 255, alpha: 1)
         usernameTF.borderStyle = UITextBorderStyle.line
         passwordTF.borderStyle = UITextBorderStyle.line
         usernameTF.layer.borderColor = borderColor.cgColor
-            passwordTF.layer.borderColor = borderColor.cgColor
-            usernameTF.layer.borderWidth = 2
+        passwordTF.layer.borderColor = borderColor.cgColor
+        usernameTF.layer.borderWidth = 2
         passwordTF.layer.borderWidth = 2
         
         
@@ -72,12 +61,6 @@ class LoginViewController: UIViewController {
             loginBtn.isEnabled = true
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
     @IBAction func handleLogin(_ sender: Any) {
         userName = usernameTF.text!
@@ -94,88 +77,56 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func handleLogin(){
-       
-        DispatchQueue.global().async {
-            do {
-        let url = URL(string: self.loginApi)!
-        var request = URLRequest(url: url)
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-                let postString = "Name=\(self.userName!)&Password=\(self.password!)"
-                //"Name=Yasser&Password=123456s"  //"id=13&name=Jack"
-        request.httpBody = postString.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(String(describing: error))")
-                return
-            }
+    func handleLoginApi(){
+        
+        let params = ["Name" :self.userName!, "Password" : self.password!] //"Name=Yasser&Password=123456s"
+        
+        Alamofire.request(loginApi, method: .post, parameters: params).responseJSON { response in
+            print("Request  \(response.request!)")
+            print("RESPONSE \(response.result.value!)")
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString!)")
-            if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-                                    if let jsonDictionary = json as? [String: Any] {
-                                        let success = jsonDictionary["success"] as? Bool
-                                        print("success",success ?? false)
-                                        DispatchQueue.main.sync {
-                                        if(success!){
-                                            //save login data
-                                            let userDefaults = UserDefaults.standard
-                                            userDefaults.set(true, forKey: "login")
-                                            userDefaults.set(jsonDictionary["id"] as? Int, forKey: "id")
-                                            userDefaults.set(jsonDictionary["Email"]!, forKey: "email")
-                                            userDefaults.set(jsonDictionary["Name"]!, forKey: "name")
-                                            userDefaults.set(jsonDictionary["Password"]!, forKey: "password")
-                                            userDefaults.set(jsonDictionary["Phone"]!, forKey: "phone")
-                                            userDefaults.synchronize()
+            let json = JSON(response.result.value!)
+            print("swiftyJsonVar: \(json)")
+            let success = json["success"]
 
-                                                //open next page
-                                                self.performSegue(withIdentifier: "OrdersSegue", sender: self)
-                                        }else{
-                                            let alert = UIAlertController(title: "Login Failed", message: "your data may be in correct. try again", preferredStyle: UIAlertControllerStyle.alert)
-                                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                            self.present(alert, animated: true, completion: nil)
-                                        }
-                                        }
-                                    }
-                
-                                }
-        }
-        task.resume()
-                
-            }
+                if(success == true){
+                    //save login data
+                    
+                    let userDefaults = UserDefaults.standard
+                    userDefaults.set(true, forKey: "login")
+                    userDefaults.set(json["id"] .int!, forKey: "id")
+                    userDefaults.set(json["Email"].string!, forKey: "email")
+                    userDefaults.set(json["Name"].string!, forKey: "name")
+                    userDefaults.set(json["Password"].string!, forKey: "password")
+                    userDefaults.set(json["Phone"].string!, forKey: "phone")
+                    userDefaults.synchronize()
+
+                    //open next page
+                    self.performSegue(withIdentifier: "OrdersSegue", sender: self)
+                }else{
+                    let alert = UIAlertController(title: "Login Failed", message: "your data may be in correct. try again", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+
         }
     }
+    
+   
     func handleTestApi() {
-        
-        var request = URLRequest(url:URL(string:testApi)!)
-        request.httpMethod = "POST"
-        
+    
         let params = ["un":"userName", "up":"userPassword"]
-        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let task=URLSession.shared.dataTask(with: request) { (data:Data?, response:URLResponse?, error:Error?) in
-            if let safeData = data{
-                print("response: \(String(describing: String(data:safeData, encoding:.utf8)!))")
-                if let json = try? JSONSerialization.jsonObject(with: safeData, options: []) {
-                                        if let jsonDictionary = json as? [String: String] {
-                                            let status = jsonDictionary["status"]!
-                                            print("status",status)
-                                            if(status == "success"){
-                                                self.handleLogin()
-                                            }
-                    }
-                    
-                }
+
+        Alamofire.request(testApi, method: .post, parameters: params, encoding: JSONEncoding.default, headers: ["Content-Type":"Application/json"]).responseJSON { response in
+            print("Request  \(response.request!)")
+            print("RESPONSE \(response.result.value!)")
+            
+            let json = JSON(response.result.value!)
+            print("swiftyJsonVar: \(json)")
+            if(json["status"] == "success"){
+                self.handleLoginApi()
             }
         }
-        task.resume()
     }
    
 }

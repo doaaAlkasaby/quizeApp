@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +17,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+    var googleAPIKey = "AIzaSyDY9qDPwm1_9fbDsj8WRf3EK4H7aApR2oI" // "AIzaSyBPg6a5c6LnUn89J61Zv7rKC-UdsbfKqGU"
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
         
+        GMSServices.provideAPIKey(googleAPIKey)
+        GMSPlacesClient.provideAPIKey(googleAPIKey)
+        
+        //Change status bar color
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.backgroundColor = UIColor(red: 0, green: 255, blue: 255, alpha: 1) 
+        
+        //check if user login begore
+        let loginBefore = UserDefaults.standard.object(forKey: "login") as? Bool
+        //print("login before", loginBefore!)
+        
+        if(loginBefore != nil){
+            if(loginBefore!){
+                //open next page
+                print("logged")
+                let sb = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let vc = sb.instantiateViewController(withIdentifier: "CollectionController")
+                
+                vc.modalTransitionStyle = .crossDissolve
+                window!.rootViewController = vc
+                window!.makeKeyAndVisible()
+            }
+        }
         return true
     }
 

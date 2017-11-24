@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class CollectionViewCell: UICollectionViewCell {
     
@@ -16,30 +18,30 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameTV: UILabel!
     @IBOutlet weak var customerPhoneTV: UILabel!
     @IBOutlet weak var customerNameTV: UILabel!
-    
+    @IBOutlet var starsCollection: [UIButton]!
+
     var imageChache = NSCache<NSString, UIImage>()
     
     func setItemImage(imgUrl : String){
-        print("imageLink : \(imgUrl)")
-        if let cachedImg = imageChache.object(forKey: (imgUrl as? NSString)!){ //if image cached before
-            imgView.image = cachedImg
-        }else{
-            DispatchQueue.global().async {
-                do {
-                    
-                    let url = URL(string: imgUrl)!
-                    let jsonData = try! Data(contentsOf: url)
-                    
-                    let img = UIImage(data: jsonData)
-                    //if image not cached cache it
-                self.imageChache.setObject(img!, forKey: imgUrl as NSString)
-                    
-                    DispatchQueue.main.sync {
-                        self.imgView.image = img
-                    }
-                    
-                }
+
+        Alamofire.request(imgUrl).responseImage { response in
+            
+            if let image = response.result.value {
+                print("image downloaded: \(image)")
+                self.imgView.image = image
+                self.imgView.layer.cornerRadius = self.imgView.frame.height/2;
+                self.imgView.clipsToBounds = true
             }
         }
     }
+    
+    func setItemRating(rateValue : Int){
+        for index in stride(from : 0 ,to: rateValue, by: 1) {
+            starsCollection[index].setTitle("★", for:  UIControlState.normal)
+            starsCollection[index].setTitleColor(UIColor.yellow, for: UIControlState.normal)
+            
+        }
+        print("rate func")
+    }
+   
 }
